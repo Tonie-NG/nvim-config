@@ -12,19 +12,27 @@ mv ~/.local/share/nvim ~/.local/share/nvim-backup
 ```
 
 Clone this repository.
-```
+```bash
 https://github.com/tonie-ng/nvim-config.git ~/.config/nvim && nvim
 ```
-> This will also open nvim if the clone was successfull. Select `n`
+> This will also open nvim if the clone was successful. Select `n` on the initial prompt (my opinion, this will reject the starter config from NvChad and use the one provided in this repo).
 
 Install LSPs using mason
-```
+```bash
 :MasonInstallAll
 ```
-> This shoudl normally install lsps included within the ensure installed options but for some reason it doesn't. You can Select the lsps you want from the menu on your screen by pressing `I`.
+> This should normally install lsps included within the ensure installed options but for some reason it doesn't. You can select the LSPs you want from the menu on your screen and pressing `I` to install.
+
+Enable syntax highlighting by installing the tree-sitter plugin for the language of your choice.
+```bash
+:TSIntall <language>
+
+ie.
+:TSIntall go
+```
 
 To enable wakatime, type
-```
+```bash
 :WakaTimeApiKey
 ```
 > You'll be prompted to provide your api key, please go ahead and do that.
