@@ -3,24 +3,28 @@ local plugins = {
     "wakatime/vim-wakatime",
 		lazy = false
   },
-  "williamboman/mason-lspconfig.nvim",
-  opts = {
-    ensure_installed = {
-      "gopls",
-      "clangd",
-      "rust-analyzer",
-      "clangd-format",
-      "pyright",
-      "typescript-language-server",
-      "python-lsp-server",
-    }
-  },
   {
     "neovim/nvim-lspconfig",
     config = function ()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end
+  },
+	{
+		"williamboman/mason.nvim",
+		opts = {
+			ensure_installed = {
+				"lua-language-server",
+				"gleam",
+				"gopls",
+				"clangd",
+				"rust-analyzer",
+				"clang-format",
+				"pyright",
+				"typescript-language-server",
+				"python-lsp-server",
+			}
+		}
   },
   {
     "rust-lang/rust.vim",
@@ -40,6 +44,9 @@ local plugins = {
       require("rust-tools").setup(opts)
     end
   },
+	{
+		"glas"
+	}
 }
 
 return plugins

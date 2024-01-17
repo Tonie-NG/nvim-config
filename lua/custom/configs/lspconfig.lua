@@ -5,8 +5,12 @@ local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
 lspconfig.gleam.setup ({
-	on_attach = on_attach,
-	capabilities = capabilities,
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {"glas", "--stdio"},
+    filetypes = { "gleam" },
+    root_dir = util.root_pattern("gleam.toml"),
+    single_file_support = true
 })
 
 lspconfig.tsserver.setup ({
