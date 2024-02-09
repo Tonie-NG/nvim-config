@@ -4,14 +4,28 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
-lspconfig.gleam.setup ({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = {"glas", "--stdio"},
-    filetypes = { "gleam" },
-    root_dir = util.root_pattern("gleam.toml"),
-    single_file_support = true
+lspconfig.html.setup ({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	single_file_support = true
 })
+
+lspconfig.cssls.setup ({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	single_file_support = true
+})
+
+lspconfig.gleam.setup ({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- cmd = {"gleam", "lsp"},
+	cmd = {"glas",  "--stdio"},
+  filetypes = { "gleam" },
+  root_dir = util.root_pattern("gleam.toml"),
+  single_file_support = true,
+})
+
 
 lspconfig.tsserver.setup ({
   on_attach = on_attach,
@@ -20,7 +34,8 @@ lspconfig.tsserver.setup ({
     preferences = {
       disableSuggestions = true
     }
-  }
+  },
+	filetypes = { "ts", "js", "tsx", "jsx" }
 })
 
 lspconfig.gopls.setup ({
@@ -48,20 +63,8 @@ lspconfig.clangd.setup ({
   capabilities = capabilities
 })
 
-lspconfig.pylsp.setup ({
+lspconfig.pyright.setup ({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
-  plugins = {
-    pydocstyle = {
-      enabled = false
-    },
-    pylint = {
-      enabled = true,
-    },
-    rope_autoimport = {
-      enabled = true,
-      memory = true
-    }
-  }
 })

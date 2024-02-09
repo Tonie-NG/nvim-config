@@ -11,18 +11,31 @@ local plugins = {
     end
   },
 	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
+		opts = function ()
+			return require "custom.configs.null-ls"
+		end,
+	},
+	{
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
 				"lua-language-server",
 				"gleam",
 				"gopls",
+				"gofumpt",
+				"goimports-reviser",
 				"clangd",
 				"rust-analyzer",
 				"clang-format",
 				"pyright",
 				"typescript-language-server",
-				"python-lsp-server",
+				"sqlls",
+				"astro-language-server",
+				"css-lsp",
+				"html-lsp",
+				"cssmodules-language-server",
 			}
 		}
   },
@@ -43,10 +56,7 @@ local plugins = {
     config = function (_, opts)
       require("rust-tools").setup(opts)
     end
-  },
-	{
-		"glas"
-	}
+  }
 }
 
 return plugins
