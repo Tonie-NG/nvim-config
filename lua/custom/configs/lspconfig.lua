@@ -4,10 +4,22 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
-lspconfig.html.setup ({
+lspconfig.tsserver.setup ({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	single_file_support = true
+	init_options = {
+		preferences = {
+			disableSuggestions = true,
+		}
+	}
+})
+
+lspconfig.clangd.setup ({
+  on_attach = function (client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities
 })
 
 lspconfig.cssls.setup ({
@@ -19,23 +31,10 @@ lspconfig.cssls.setup ({
 lspconfig.gleam.setup ({
   on_attach = on_attach,
   capabilities = capabilities,
-  -- cmd = {"gleam", "lsp"},
 	cmd = {"glas",  "--stdio"},
   filetypes = { "gleam" },
   root_dir = util.root_pattern("gleam.toml"),
   single_file_support = true,
-})
-
-
-lspconfig.tsserver.setup ({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    preferences = {
-      disableSuggestions = true
-    }
-  },
-	filetypes = { "ts", "js", "tsx", "jsx" }
 })
 
 lspconfig.gopls.setup ({
@@ -55,12 +54,10 @@ lspconfig.gopls.setup ({
   }
 })
 
-lspconfig.clangd.setup ({
-  on_attach = function (client, bufnr)
-    client.server_capabilities.signatureHelpProvider = false
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities
+lspconfig.html.setup ({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	single_file_support = true
 })
 
 lspconfig.pyright.setup ({
@@ -68,3 +65,4 @@ lspconfig.pyright.setup ({
   capabilities = capabilities,
   filetypes = {"python"},
 })
+
