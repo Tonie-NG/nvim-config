@@ -21,7 +21,7 @@ Install LSPs using mason
 ```bash
 :MasonInstallAll
 ```
-> This should normally install lsps included within the ensure installed options but for some reason it doesn't. You can select the LSPs you want from the menu on your screen and pressing `I` to install.
+> This should normally install lsps included within the ensure installed options. You can select the LSPs you want from the menu on your screen and pressing `I` to install.
 
 Enable syntax highlighting by installing the tree-sitter plugin for the language of your choice.
 ```bash
