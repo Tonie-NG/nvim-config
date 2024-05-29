@@ -4,16 +4,11 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
--- lspconfig.rubylsp.setup ({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
---
---
 lspconfig.gleam.setup ({
   on_attach = on_attach,
   capabilities = capabilities,
 	cmd = { "gleam", "lsp" },
+	-- cmd = { "glas", "--stdio" },
   filetypes = { "gleam" },
   root_dir = util.root_pattern("gleam.toml", ".git")
 })

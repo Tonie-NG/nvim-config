@@ -22,7 +22,6 @@ local plugins = {
 		opts = {
 			ensure_installed = {
 				"lua-language-server",
-				"ruby-lsp",
 				"rubyfmt",
 				"gopls",
 				"gofumpt",
