@@ -1,4 +1,5 @@
 ## Configuration Template for Neovim
+> This config is no longer supported, you can find my latest config here - [V1](https://github.com/tonie-ng/nvim)
 
 🎨 A minimal Neovim setup crafted to align with my coding preferences.
 
